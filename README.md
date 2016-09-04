@@ -1,11 +1,12 @@
 # ofTypeOperator
 
-A module for add `ofType` method to RxJS's Observable.
-It inspired by `redux-observable`.
+A module for add ofType method to RxJS's Observable.
+It inspired by redux-observable.
 
 ## usage
 
 ```javascript
+import { Observable } "rxjs";
 import { Action } "OfTypeOperator";
 
 // this operator always expect `Observable<Action>` type.
