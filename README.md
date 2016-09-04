@@ -1,18 +1,18 @@
 # ofTypeOperator
 
-`RxJS`に`Observable.ofType`メソッドを追加するモジュール
-redux-observableのofTypeオペレータに着想を得ている
+A module for add `ofType` method to RxJS's Observable.
+It inspired by `redux-observable`.
 
-## 使い方
+## usage
 
 ```javascript
-interface Action<P> {
-  type: string;
-  payload: P;
-}
-action$: Observable<Action>
+import { Action } "OfTypeOperator";
 
-import "OfTypeOperator"; // add Observable.prototype.ofType
+// this operator always expect `Observable<Action>` type.
+const action$: Observable<Action> = createAction$();
+
+// if you don't want annotate source Observable(like action$), it is only necessary to import module.
+import "OfTypeOperator";
 
 const YOUR_ACTION_TYPE = "YOUR_ACTION_TYPE";
 interface YourPayload {}
