@@ -1,12 +1,19 @@
 import { deepStrictEqual } from "assert";
-import { Observable } from "rxjs";
+import { Observable, TestScheduler } from "rxjs";
 
 import "./";
-import { testScheduler, cold } from "./test-helpers";
+import { createTestScheduler, TestSchedulers, createColdObservable } from "./test-helpers";
 
 describe("ofTypeObservable", () => {
   let action$: Observable<any>;
+  let testSchedulers: TestSchedulers;
+  let testScheduler: TestScheduler;
+  let cold: createColdObservable;
+
   beforeEach(() => {
+    testSchedulers = createTestScheduler();
+    testScheduler = testSchedulers.testScheduler;
+    cold = testSchedulers.cold;
     action$ = cold("abc", {
       a: { type: "foo", payload: "fooPayload" },
       b: { type: "bar", payload: "barPayload" },
@@ -20,9 +27,13 @@ describe("ofTypeObservable", () => {
     testScheduler.flush();
   });
 
-  it("should filtering multiple type", () => {
-    const expect$ = action$.ofType("bar", "buzz");
-    testScheduler.expectObservable(expect$).toBe("-ab", { a: "barPayload", b: "buzzPayload" });
+  it("can pick by own payload", () => {
+    action$ = cold("ab", {
+      a: { type: "foo", payload: "fooPayload" },
+      b: { type: "bar", customPayload: "barPayload" },
+    });
+    const expect$ = action$.ofType("bar", (value: any) => value.customPayload);
+    testScheduler.expectObservable(expect$).toBe("-a", { a: "barPayload" });
     testScheduler.flush();
   });
 });

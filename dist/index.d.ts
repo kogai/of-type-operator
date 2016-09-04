@@ -1,10 +1,11 @@
 import { Observable } from "rxjs";
 export interface Action<T> {
     type: string;
-    payload: T;
+    payload?: T;
 }
+export declare type PickByFunction = <T>(action: Action<T>) => T;
 export interface OfTypeSignature<T> {
-    <T>(actionType: string): Observable<T>;
+    <T>(actionType: string, pickBy?: PickByFunction): Observable<T>;
 }
 declare module "rxjs/Observable" {
     interface Observable<T> {

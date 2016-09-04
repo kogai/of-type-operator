@@ -8,6 +8,8 @@
     "mocha": "$(npm bin)/mocha",
     "prepublish": "npm run tsc",
     "publish:patch": "npm version patch && npm publish",
+    "publish:minor": "npm version minor && npm publish",
+    "pretest": "npm run tsc",
     "test": "npm run mocha -- $(find ./dist -name '*.spec.js')",
     "test:watch": "npm run test -- --watch"
   },
