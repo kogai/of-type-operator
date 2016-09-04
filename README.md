@@ -7,19 +7,19 @@ It inspired by redux-observable.
 
 ```javascript
 import { Observable } "rxjs";
-import { Action } "OfTypeOperator";
+import { Action } "ofTypeOperator";
 
 // this operator always expect `Observable<Action>` type.
 const action$: Observable<Action> = createAction$();
 
-// if you don't want annotate source Observable(like action$), it is only necessary to import module.
-import "OfTypeOperator";
+// if you don't want annotate source Observable(like `action$: Observable<Action>`), import module is only necessary to add this operator.
+import "ofTypeOperator";
 
 const YOUR_ACTION_TYPE = "YOUR_ACTION_TYPE";
 interface YourPayload {}
 
 const payload$ = action$
   .ofType<YourPayload>(YOUR_ACTION_TYPE)
-  .map(((payload: YourPayload) => payload)
+  .do(((payload: YourPayload) => console.log(payload))
   ;
 ```
