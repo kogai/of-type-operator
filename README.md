@@ -11,17 +11,23 @@ It inspired by redux-observable.
 import { Observable } "rxjs";
 import { Action } "ofTypeOperator";
 
+const YOUR_ACTION_TYPE = "YOUR_ACTION_TYPE";
+interface YourPayload {}
+
 // this operator always expect `Observable<Action>` type.
-const action$: Observable<Action> = createAction$();
+const action$: Observable<Action<YourPayload>> = createAction$();
 
 // if you don't want annotate source Observable(like `action$: Observable<Action>`), import module is only necessary to add this operator.
 import "ofTypeOperator";
 
-const YOUR_ACTION_TYPE = "YOUR_ACTION_TYPE";
-interface YourPayload {}
-
 const payload$ = action$
   .ofType<YourPayload>(YOUR_ACTION_TYPE)
+  .do(((payload: YourPayload) => console.log(payload))
+  ;
+
+// if your action incompatible with Action type, you can pass pickBy function to pick for your own type.
+const payload$ = action$
+  .ofType<YourPayload>(YOUR_ACTION_TYPE, (action: YourSpecificAction) => action.yourSpecficProperty)
   .do(((payload: YourPayload) => console.log(payload))
   ;
 ```
