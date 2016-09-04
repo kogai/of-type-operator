@@ -17,9 +17,8 @@ class OfTypeSubscriber extends rxjs_1.Subscriber {
         this.actionType = actionType;
     }
     _next(value) {
-        const { next } = this.destination;
-        if (value.type === this.actionType && next) {
-            next(value.payload);
+        if (value.type === this.actionType && this.destination.next) {
+            this.destination.next(value.payload);
         }
     }
 }

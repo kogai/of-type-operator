@@ -22,9 +22,8 @@ class OfTypeSubscriber<A extends Action<T>, T> extends Subscriber<A> {
   }
 
   protected _next(value: A) {
-    const { next } = this.destination;
-    if (value.type === this.actionType && next) {
-      next(value.payload);
+    if (value.type === this.actionType && this.destination.next) {
+      this.destination.next(value.payload);
     }
   }
 }
