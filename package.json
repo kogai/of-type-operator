@@ -5,9 +5,11 @@
   "main": "dist/",
   "scripts": {
     "tsc": "$(npm bin)/tsc",
+    "mocha": "$(npm bin)/mocha",
     "prepublish": "npm run tsc",
     "publish:patch": "npm version patch && npm publish",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run mocha",
+    "test:watch": "npm run mocha -- --watch"
   },
   "keywords": [
     "rxjs",
@@ -28,6 +30,9 @@
     "rxjs": "^5.0.0-beta.11"
   },
   "devDependencies": {
+    "@types/es6-shim": "0.0.31",
+    "@types/mocha": "^2.2.31",
+    "mocha": "^3.0.2",
     "typescript": "^2.1.0-dev.20160904"
   }
 }
