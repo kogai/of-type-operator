@@ -1,0 +1,19 @@
+{
+  "name": "ofTypeOperator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "tsc": "$(npm bin)/tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "rxjs": "^5.0.0-beta.11"
+  },
+  "devDependencies": {
+    "typescript": "^2.1.0-dev.20160904"
+  }
+}
