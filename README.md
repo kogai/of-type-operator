@@ -1,5 +1,7 @@
 # of-type-operator
 
+[![npm version](https://badge.fury.io/js/of-type-operator.svg)](https://badge.fury.io/js/of-type-operator)
+
 A module for add ofType method to RxJS's Observable.
 It inspired by redux-observable.
 
