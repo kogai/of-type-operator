@@ -5,9 +5,6 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var rxjs_1 = require("rxjs");
-function ofType(actionType) {
-    return this.lift(new OfTypeOperator(actionType));
-}
 var OfTypeOperator = (function () {
     function OfTypeOperator(actionType) {
         this.actionType = actionType;
@@ -30,4 +27,7 @@ var OfTypeSubscriber = (function (_super) {
     };
     return OfTypeSubscriber;
 }(rxjs_1.Subscriber));
+function ofType(actionType) {
+    return this.lift(new OfTypeOperator(actionType));
+}
 rxjs_1.Observable.prototype.ofType = ofType;

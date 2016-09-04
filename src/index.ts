@@ -5,10 +5,6 @@ export interface Action<T> {
   payload: T;
 }
 
-function ofType<T>(actionType: string): Observable<T> {
-  return this.lift(new OfTypeOperator(actionType));
-}
-
 class OfTypeOperator<A, T> implements Operator<A, T> {
   constructor(private actionType: string) {}
   call(subscriber: Subscriber<T>, source: any): any {
@@ -30,6 +26,10 @@ class OfTypeSubscriber<A extends Action<T>, T> extends Subscriber<A> {
 
 export interface OfTypeSignature<T> {
   <T>(actionType: string): Observable<T>;
+}
+
+function ofType<T>(actionType: string): Observable<T> {
+  return this.lift(new OfTypeOperator(actionType));
 }
 
 declare module "rxjs/Observable" {

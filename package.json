@@ -8,8 +8,8 @@
     "mocha": "$(npm bin)/mocha",
     "prepublish": "npm run tsc",
     "publish:patch": "npm version patch && npm publish",
-    "test": "npm run mocha",
-    "test:watch": "npm run mocha -- --watch"
+    "test": "npm run mocha -- $(find ./dist -name '*.spec.js')",
+    "test:watch": "npm run test -- --watch"
   },
   "keywords": [
     "rxjs",
@@ -27,6 +27,7 @@
     "url": "https://github.com/kogai/of-type-operator"
   },
   "dependencies": {
+    "@types/node": "^6.0.38",
     "rxjs": "^5.0.0-beta.11"
   },
   "devDependencies": {
