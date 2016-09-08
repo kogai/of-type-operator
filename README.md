@@ -9,7 +9,7 @@ It inspired by redux-observable.
 
 ```javascript
 import { Observable } "rxjs";
-import { Action } "ofTypeOperator";
+import { Action } "of-type-operator";
 
 const YOUR_ACTION_TYPE = "YOUR_ACTION_TYPE";
 interface YourPayload {}
@@ -18,7 +18,7 @@ interface YourPayload {}
 const action$: Observable<Action<YourPayload>> = createAction$();
 
 // if you don't want annotate source Observable(like `action$: Observable<Action>`), import module is only necessary to add this operator.
-import "ofTypeOperator";
+import "of-type-operator";
 
 const payload$ = action$
   .ofType<YourPayload>(YOUR_ACTION_TYPE)

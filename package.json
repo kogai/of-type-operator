@@ -3,6 +3,7 @@
   "version": "0.2.1",
   "description": "",
   "main": "dist/",
+  "typings": "dist/index.d.ts",
   "scripts": {
     "tsc": "$(npm bin)/tsc",
     "mocha": "$(npm bin)/mocha",

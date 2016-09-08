@@ -7,7 +7,7 @@ export interface Action<T> {
 
 export type PickByFunction = <T>(action: Action<T>) => T
 
-class OfTypeOperator<A, T> implements Operator<A, T> {
+class OfTypeOperator<A extends Action<T>, T> implements Operator<A, T> {
   constructor(private actionType: string, private pickBy: PickByFunction) {}
   call(subscriber: Subscriber<T>, source: any): any {
     return source._subscribe(new OfTypeSubscriber(subscriber, this.actionType, this.pickBy));
