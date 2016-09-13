@@ -1,2 +1,4 @@
 *.spec.ts
 *.spec.d.ts
+*.spec.js
+dist/test-helpers.*
