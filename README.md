@@ -8,7 +8,7 @@ It inspired by redux-observable.
 ## usage
 
 ```javascript
-import { Observable } "rxjs";
+import { Observable } "rxjs/Observable";
 import { Action } "of-type-operator";
 
 const YOUR_ACTION_TYPE = "YOUR_ACTION_TYPE";
@@ -22,12 +22,12 @@ import "of-type-operator";
 
 const payload$ = action$
   .ofType<YourPayload>(YOUR_ACTION_TYPE)
-  .do(((payload: YourPayload) => console.log(payload))
+  .subscribe(console.log) // log your payload
   ;
 
 // if your action incompatible with Action type, you can pass pickBy function to pick for your own type.
 const payload$ = action$
   .ofType<YourPayload>(YOUR_ACTION_TYPE, (action: YourSpecificAction) => action.yourSpecficProperty)
-  .do(((payload: YourPayload) => console.log(payload))
+  .subscribe(console.log) // log your payload
   ;
 ```
