@@ -2,3 +2,4 @@
 *.spec.js
 test-helpers.js
 test-helpers.d.ts
+dist/
