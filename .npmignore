@@ -3,7 +3,7 @@
 *.spec.js
 dist/test-helpers.*
 .gitignore
-circle.ymml
+circle.yml
 tsconfig.json
 yarn.lock
 src/
