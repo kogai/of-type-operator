@@ -2,22 +2,23 @@ import { Operator } from "rxjs/Operator";
 import { Subscriber } from "rxjs/Subscriber";
 import { Observable } from "rxjs/Observable";
 
+export type ActionType = string | number
 export interface Action<T> {
-  type: string;
+  type: ActionType;
   payload?: T;
 }
 
 export type PickByFunction = <T>(action: Action<T>) => T
 
 class OfTypeOperator<A extends Action<T>, T> implements Operator<A, T> {
-  constructor(private actionType: string, private pickBy: PickByFunction) {}
+  constructor(private actionType: ActionType, private pickBy: PickByFunction) {}
   call(subscriber: Subscriber<T>, source: any): any {
     return source._subscribe(new OfTypeSubscriber(subscriber, this.actionType, this.pickBy));
   }
 }
 
 class OfTypeSubscriber<A extends Action<T>, T> extends Subscriber<A> {
-  constructor(destination: Subscriber<T>, private actionType: string, private pickBy: PickByFunction) {
+  constructor(destination: Subscriber<T>, private actionType: ActionType, private pickBy: PickByFunction) {
     super(destination);
   }
 
@@ -28,13 +29,13 @@ class OfTypeSubscriber<A extends Action<T>, T> extends Subscriber<A> {
   }
 }
 
-function ofType<T>(actionType: string, _pickBy?: PickByFunction): Observable<T> {
+function ofType<T>(actionType: ActionType, _pickBy?: PickByFunction): Observable<T> {
   const pickBy = _pickBy ? _pickBy : (action: Action<T>) => action.payload;
   return this.lift(new OfTypeOperator(actionType, pickBy));
 }
 
 export interface OfTypeSignature<T> {
-  <T>(actionType: string, pickBy?: PickByFunction): Observable<T>;
+  <T>(actionType: ActionType, pickBy?: PickByFunction): Observable<T>;
 }
 
 declare module "rxjs/Observable" {

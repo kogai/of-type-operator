@@ -28,6 +28,18 @@ test("should filtering specific type", assert => {
   assert.end()
 })
 
+test("can recieve number as ActionType", assert => {
+  const {cold, testScheduler} = setup(assert)
+  const action$ = cold("ab", {
+    a: { type: 1, payload: "fooPayload" },
+    b: { type: 2, payload: "barPayload" },
+  });
+  const expect$ = action$.ofType(2);
+  testScheduler.expectObservable(expect$).toBe("-a", { a: "barPayload" });
+  testScheduler.flush();
+  assert.end()
+})
+
 test("can pick by own payload", assert => {
   const {cold, testScheduler} = setup(assert)
   const action$ = cold("ab", {

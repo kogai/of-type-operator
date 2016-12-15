@@ -6,13 +6,13 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "tsc": "$(npm bin)/tsc",
-    "tape": "$(npm bin)/tape",
     "prepublish": "npm run tsc",
     "publish:patch": "npm version patch && npm publish",
     "publish:minor": "npm version minor && npm publish",
     "pretest": "npm run tsc",
-    "test": "npm run tape -- $(find ./dist -name '*.spec.js') | $(npm bin)/tap-spec",
-    "test:watch": "$(npm bin)/watch 'npm run test' ./src/"
+    "test:tape": "$(npm bin)/tape $(find ./dist -name '*.spec.js') | $(npm bin)/tap-spec",
+    "test": "npm run test:tape",
+    "test:watch": "$(npm bin)/watch 'npm run test:tape' ./src/"
   },
   "keywords": [
     "rxjs",
