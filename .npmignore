@@ -2,3 +2,9 @@
 *.spec.d.ts
 *.spec.js
 dist/test-helpers.*
+.gitignore
+circle.ymml
+tsconfig.json
+yarn.lock
+src/
+.vscode
