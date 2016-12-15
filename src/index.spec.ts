@@ -1,5 +1,6 @@
 import { deepStrictEqual } from "assert";
-import { Observable, TestScheduler } from "rxjs";
+import { TestScheduler } from "rxjs/testing/TestScheduler";
+import { Observable } from "rxjs/Observable";
 
 import "./";
 import { createTestScheduler, TestSchedulers, createColdObservable } from "./test-helpers";

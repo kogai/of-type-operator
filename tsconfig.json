@@ -6,6 +6,9 @@
         "strictNullChecks": true,
         "declaration": true,
         "sourceMap": false,
-        "outDir": "dist/"
+        "outDir": "dist/",
+        "lib": [
+            "es2015"
+        ]
     }
 }

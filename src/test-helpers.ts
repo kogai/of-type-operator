@@ -1,4 +1,6 @@
-import { Observable, Subject, TestScheduler } from "rxjs";
+import { TestScheduler } from "rxjs/testing/TestScheduler";
+import { Subject } from "rxjs/Subject";
+import { Observable } from "rxjs/Observable";
 import { deepStrictEqual } from "assert";
 
 export type createColdObservable = (marbles: string, values?: any, error?: any) => Observable<any>;

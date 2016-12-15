@@ -1,4 +1,6 @@
-import { Subscriber, Observable, Operator } from "rxjs";
+import { Operator } from "rxjs/Operator";
+import { Subscriber } from "rxjs/Subscriber";
+import { Observable } from "rxjs/Observable";
 
 export interface Action<T> {
   type: string;

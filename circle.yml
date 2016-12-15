@@ -1,7 +1,13 @@
 machine:
   timezone: Asia/Tokyo
   node:
-    version: 6.2.0
+    version: 7.2.1
   environment:
     NODE_PATH: ./
     NODE_ENV: test
+
+dependencies:
+  cache_directories:
+    - ~/.cache/yarn/
+  pre:
+    - npm i -g yarn
